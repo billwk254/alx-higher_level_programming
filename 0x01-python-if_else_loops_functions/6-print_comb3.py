@@ -4,4 +4,4 @@ for i in range(10):
         if i < 9 or j < 9:
             print("{:d}{:d}, ".format(i, j), end="")
         else:
-            print("{:d}{:d}".format(i, j))
+            print("{:d}{:d}".format(i, j), end="")
