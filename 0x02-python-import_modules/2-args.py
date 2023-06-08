@@ -3,13 +3,16 @@
 import sys
 
 if __name__ == "__main__":
-    argv = sys.argv[1:]  # Exclude the script name from arguments
+	
+	args = sys.argv[1:]
+	num_args = len(args)
 
-    num_args = len(argv)
-    if num_args == 0:
-        print("0 argument.")
-        print(".")
-    else:
-        print(f"{num_args} argument{'s' if num_args > 1 else ''}:")
-        for i, arg in enumerate(argv, start=1):
-            print(f"{i}: {arg}")
+	if num_args == 0:
+	    print("0 arguments.")
+	elif num_args == 1:
+	    print("1 argument:")
+	    print("1: {}".format(args[0]))
+	else:
+	    print("{} arguments:".format(num_args))
+	for i, arg in enumerate(args):
+		print("{}: {}".format(i+1, arg))
