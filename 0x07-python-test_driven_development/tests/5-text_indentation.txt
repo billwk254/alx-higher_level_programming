@@ -1,0 +1,39 @@
+#!/usr/bin/python3
+
+
+"""
+This module contains tests for the text_indentation function.
+
+"""
+
+
+def test_text_indentation():
+    """
+    Test cases for the text_indentation function.
+
+    >>> text_indentation("Hello. How are you? I'm fine.")
+    Hello.
+    
+    How are you?
+    
+    I'm fine.
+
+    >>> text_indentation("This is a test: first line. Second line.")
+    This is a test:
+    
+    first line.
+    
+    Second line.
+
+    >>> text_indentation("No special characters")
+
+    >>> text_indentation(123)
+    Traceback (most recent call last):
+        ...
+    TypeError: text must be a string
+
+    """
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod()
