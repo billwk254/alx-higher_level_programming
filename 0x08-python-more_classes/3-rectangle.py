@@ -68,4 +68,3 @@ class Rectangle:
         for _ in range(self.height):
             rectangle_str += "#" * self.width + "\n"
         return rectangle_str[:-1]
-    
