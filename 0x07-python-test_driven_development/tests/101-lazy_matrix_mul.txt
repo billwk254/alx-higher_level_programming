@@ -1,0 +1,18 @@
+#!/usr/bin/python3
+
+
+"""
+Test cases for lazy_matrix_mul() function.
+"""
+
+
+import doctest
+from 101-lazy_matrix_mul import lazy_matrix_mul
+
+def run_tests():
+    """
+    Run the lazy_matrix_mul() doctest.
+    """
+    doctest.testmod()
+
+run_tests()
