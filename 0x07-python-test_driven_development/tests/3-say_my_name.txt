@@ -1,0 +1,34 @@
+#!/usr/bin/python3
+
+
+"""
+This module contains tests for the say_my_name function.
+
+"""
+
+
+def test_say_my_name():
+    """
+    Test cases for the say_my_name function.
+
+    >>> say_my_name("John", "Doe")
+    My name is John Doe
+
+    >>> say_my_name("Jane")
+    My name is Jane
+
+    >>> say_my_name("Alex", 123)
+    Traceback (most recent call last):
+        ...
+    TypeError: last_name must be a string
+
+    >>> say_my_name(456, "Smith")
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+    """
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod()
