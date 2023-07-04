@@ -1,0 +1,50 @@
+#!/usr/bin/python3
+
+"""
+This module contains tests for the matrix operations.
+
+"""
+
+def test_matrix_divided():
+    """
+    Test cases for the matrix_divided function.
+
+    >>> matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+    >>> div = 2
+    >>> matrix_divided(matrix, div)
+    [[0.5, 1.0, 1.5], [2.0, 2.5, 3.0], [3.5, 4.0, 4.5]]
+
+    >>> matrix = [[1, 2], [3, 4]]
+    >>> div = 0
+    >>> matrix_divided(matrix, div)
+    Traceback (most recent call last):
+        ...
+    ZeroDivisionError: division by zero
+
+    >>> matrix = [[1, 2], [3, 4]]
+    >>> div = '2'
+    >>> matrix_divided(matrix, div)
+    Traceback (most recent call last):
+        ...
+    TypeError: div must be a number
+
+    >>> matrix = [[1, 2], ['3', 4]]
+    >>> div = 2
+    >>> matrix_divided(matrix, div)
+    Traceback (most recent call last):
+        ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+    >>> matrix = [[1, 2, 3], [4, 5], [6, 7, 8]]
+    >>> div = 2
+    >>> matrix_divided(matrix, div)
+    Traceback (most recent call last):
+        ...
+    TypeError: Each row of the matrix must have the same size
+
+    """
+
+if __name__ == '__main__':
+    import doctest
+    from 2-matrix_divided import matrix_divided
+    doctest.testmod()
