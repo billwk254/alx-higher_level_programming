@@ -1,0 +1,16 @@
+#!/usr/bin/python3
+
+"""
+Test cases for matrix_mul() function.
+"""
+
+import doctest
+from 100-matrix_mul import matrix_mul
+
+def run_tests():
+    """
+    Run the matrix_mul() doctest.
+    """
+    doctest.testmod()
+
+run_tests()
