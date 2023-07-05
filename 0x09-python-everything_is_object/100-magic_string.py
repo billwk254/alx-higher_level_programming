@@ -9,5 +9,8 @@ def magic_string():
         str: The magic string.
 
     """
-    magic_string.count = getattr(magic_string, 'count', 0) + 1
-    return "BestSchool" + (", BestSchool" * (magic_string.count - 1))
+    if not hasattr(magic_string, 'counter'):
+        magic_string.counter = 1
+    else:
+        magic_string.counter += 1
+    return "BestSchool" * magic_string.counter + '\n'
