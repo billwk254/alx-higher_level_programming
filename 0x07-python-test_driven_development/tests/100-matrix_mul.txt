@@ -1,18 +1,115 @@
-#!/usr/bin/python3
+============================
+How to Use 100-matrix_mul.py
+============================
 
+This module defines a function `matrix_mul(m_a, m_b)` that performs matrix multiplication.
 
-"""
-Test cases for matrix_mul() function.
-"""
+Usage
+=====
+The `matrix_mul(...)` function returns a new matrix representing the multiplication of two matrices `m_a` and `m_b`.
 
+1. Multiplying matrices of the same dimensions:
+   - Example:
+     ```python
+     >>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+     >>> m_a = [[1, 2], [3, 4]]
+     >>> m_b = [[1, 2], [3, 4]]
+     >>> print(matrix_mul(m_a, m_b))
+     [[7, 10], [15, 22]]
+     ```
+   - Output:
+     ```python
+     >>> matrix_mul(m_a, m_b)
+     [[7, 10], [15, 22]]
+     ```
 
-import doctest
-from 100-matrix_mul import matrix_mul
+2. Multiplying matrices with different dimensions:
+   - Example:
+     ```python
+     >>> m_a = [[1, 2]]
+     >>> m_b = [[3, 4], [5, 6]]
+     >>> print(matrix_mul(m_a, m_b))
+     [[13, 16]]
+     ```
+   - Output:
+     ```python
+     >>> matrix_mul(m_a, m_b)
+     [[13, 16]]
+     ```
 
-def run_tests():
-    """
-    Run the matrix_mul() doctest.
-    """
-    doctest.testmod()
+3. Multiplying matrices with floating-point numbers:
+   - Example:
+     ```python
+     >>> m_a = [[1.2, 5.5, 6.2], [4.66, 12.3, -9.2]]
+     >>> m_b = [[5.0, 3.3], [-2.9, 4.4], [7.2, 4.4]]
+     >>> print(matrix_mul(m_a, m_b))
+     [[34.69, 55.44000000000001], [-78.61, 29.018000000000008]]
+     ```
+   - Output:
+     ```python
+     >>> matrix_mul(m_a, m_b)
+     [[34.69, 55.44000000000001], [-78.61, 29.018000000000008]]
+     ```
 
-run_tests()
+4. Multiplying matrices with a combination of integers and floats:
+   - Example:
+     ```python
+     >>> m_a = [[1, 2.2, 3.3, 4], [5, 6, 7, 8.8]]
+     >>> m_b = [[1.1, 2, 3.3], [4.0, 5.5, 6], [7, 8, 9], [10.01, 11, 12.3]]
+     >>> print(matrix_mul(m_a, m_b))
+     [[73.03999999999999, 84.5, 95.4], [166.58800000000002, 195.8, 223.74]]
+     ```
+   - Output:
+     ```python
+     >>> matrix_mul(m_a, m_b)
+     [[73.03999999999999, 84.5, 95.4], [166.58800000000002, 195.8, 223.74]]
+     ```
+
+A minimum of two arguments (`m_a` and `m_b`) must be provided. Otherwise, a `TypeError` is raised.
+
+5. Missing arguments:
+   - Example:
+     ```python
+     >>> print(matrix_mul())  # doctest: +NORMALIZE_WHITESPACE
+     Traceback (most recent call last):
+       File "<stdin>", line 1, in <module>
+       File "100-matrix_mul.py", line 5, in matrix_mul
+         raise TypeError("matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'")
+     TypeError: matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+     ```
+   - Output:
+     ```python
+     >>> matrix_mul()
+     Traceback (most recent call last):
+       File "<stdin>", line 1, in <module>
+       File "100-matrix_mul.py", line 5, in matrix_mul
+         raise TypeError("matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'")
+     TypeError: matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+     ```
+
+ValueErrors
+===========
+If two matrices cannot be multiplied (i.e., the number of columns in `m_a` is not equal to the number of rows in `m_b`), a `ValueError` is raised.
+
+6. Invalid dimensions for matrix multiplication:
+   - Example:
+     ```python
+     >>> m_a = [[1, 2], [3, 4]]
+     >>> m_b = [[1, 2], [2, 3], [4, 5]]
+     >>> print(matrix_mul(m_a, m_b))
+     Traceback (most recent call last):
+       File "<stdin>", line 1, in <module>
+       File "100-matrix_mul.py", line 10, in matrix_mul
+         raise ValueError("m_a and m_b can't be multiplied")
+     ValueError: m_a and m_b can't be multiplied
+     ```
+   - Output:
+     ```python
+     >>> matrix_mul(m_a, m_b)
+     Traceback (most recent call last):
+       File "<stdin>", line 1, in <module>
+       File "100-matrix_mul.py", line 10, in matrix_mul
+         raise ValueError("m_a and m_b can't be multiplied")
+     ValueError: m_a and m_b can't be multiplied
+     ```
+
