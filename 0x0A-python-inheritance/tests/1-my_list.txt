@@ -1,27 +1,194 @@
-    """
-    Custom list class that inherits from list.
+=======================
+How to Use 1-my_list.py
+=======================
 
-    Public Methods:
-        print_sorted(self): Prints the list in sorted order (ascending sort).
+This module defines a class `MyList` that inherits from `list`.
 
-    Examples:
-        >>> my_list = MyList([3, 1, 2])
-        >>> my_list.print_sorted()
-        [1, 2, 3]
+Instantiation
+=============
 
-        >>> my_empty_list = MyList([])
-        >>> my_empty_list.print_sorted()
-        []
+To create an instance of `MyList`, you can use the following methods:
 
-        >>> my_single_element_list = MyList([5])
-        >>> my_single_element_list.print_sorted()
-        [5]
+1. Instantiating with no arguments:
+   - This will return an empty `MyList` object.
+   - Example:
+     ```python
+     >>> MyList = __import__('1-my_list').MyList
+     >>> my_list = MyList()
+     >>> type(my_list)
+     <class '1-my_list.MyList'>
+     ```
+   - Output:
+     ```python
+     >>> print(my_list)
+     []
+     ```
 
-        >>> my_negative_numbers_list = MyList([-3, -1, -2])
-        >>> my_negative_numbers_list.print_sorted()
-        [-3, -2, -1]
+2. Instantiating with an iterable object:
+   - You can pass an iterable object as the argument to initialize `MyList` with pre-defined elements.
+   - Example:
+     ```python
+     >>> my_list = MyList([1, 2, 3])
+     >>> print(my_list)
+     [1, 2, 3]
+     ```
+   - Output:
+     ```python
+     >>> print(my_list)
+     [1, 2, 3]
+     ```
 
-        >>> my_duplicate_elements_list = MyList([3, 1, 2, 3, 1])
-        >>> my_duplicate_elements_list.print_sorted()
-        [1, 1, 2, 3, 3]
-    """
+3. Instantiating with `None`:
+   - If you pass `None` as the argument, a `TypeError` will be raised as `NoneType` is not iterable.
+   - Example:
+     ```python
+     >>> my_list = MyList(None)
+     ```
+   - Output:
+     ```python
+     >>> my_list = MyList(None)
+     Traceback (most recent call last):
+       File "<stdin>", line 1, in <module>
+       File "1-my_list.py", line 18, in __init__
+         self.extend(iterable)
+     TypeError: 'NoneType' object is not iterable
+     ```
+
+Note: Only one argument can be passed for instantiation. Passing multiple arguments will result in a `TypeError`.
+
+Usage
+=====
+
+`MyList` is an inherited `list` class, which means it inherits all the methods of a regular list. Here are some examples:
+
+1. Adding elements using `append()`:
+   - You can add elements to a `MyList` object using the `append()` method.
+   - Example:
+     ```python
+     >>> my_list = MyList()
+     >>> my_list.append(1)
+     >>> my_list.append(2)
+     >>> my_list.append(3)
+     >>> print(my_list)
+     [1, 2, 3]
+     ```
+   - Output:
+     ```python
+     >>> print(my_list)
+     [1, 2, 3]
+     ```
+
+2. Modifying elements using indexing:
+   - You can modify elements of a `MyList` object using indexing.
+   - Example:
+     ```python
+     >>> my_list[0] = 5
+     >>> print(my_list)
+     [5, 2, 3]
+     ```
+   - Output:
+     ```python
+     >>> print(my_list)
+     [5, 2, 3]
+     ```
+
+3. Removing elements using `remove()`:
+   - You can remove elements from a `MyList` object using the `remove()` method.
+   - Example:
+     ```python
+     >>> my_list.remove(5)
+     >>> print(my_list)
+     [2, 3]
+     ```
+   - Output:
+     ```python
+     >>> print(my_list)
+     [2, 3]
+     ```
+
+For more built-in methods and functionalities, refer to the documentation on Python lists.
+
+`print_sorted` Method
+=======================
+
+`MyList` provides a method called `print_sorted()` which prints the elements of the list in ascending sorted order.
+
+1. Usage:
+   - Example:
+     ```python
+     >>> my_list = MyList()
+     >>> my_list.append(1)
+     >>> my_list.append(4)
+     >>> my_list.append(2)
+     >>> my_list.append(3)
+     >>> my_list.append(5)
+     >>> print(my_list)
+     [1, 4, 2, 3, 5]
+     ```
+   - Output:
+     ```python
+     >>> my_list.print_sorted()
+     [1, 2, 3, 4, 5]
+     ```
+
+2. Original list order:
+   - The order of the original list is not altered after calling the `print_sorted()` method.
+   - Example:
+     ```python
+     >>> print(my_list)
+     [1, 4, 2, 3, 5]
+     ```
+   - Output:
+     ```python
+     >>> print(my_list)
+     [1, 4, 2, 3, 5]
+     ```
+
+3. Lexicographic sorting:
+   - Lists of strings are sorted lexicographically.
+   - Example:
+     ```python
+     >>> my_list = MyList()
+     >>> my_list.append("Brennan")
+     >>> my_list.append("Poppy")
+     >>> my_list.append("School")
+     >>> my_list.append("Holberton")
+     >>> my_list.append("Betty")
+     >>> print(my_list)
+     ['Brennan', 'Poppy', 'School', 'Holberton', 'Betty']
+     ```
+   - Output:
+     ```python
+     >>> my_list.print_sorted()
+     ['Betty', 'Brennan', 'Holberton', 'Poppy', 'School']
+     ```
+
+4. Unaltered original list:
+   - The original list remains unaltered after calling the `print_sorted()` method.
+   - Example:
+     ```python
+     >>> print(my_list)
+     ['Brennan', 'Poppy', 'School', 'Holberton', 'Betty']
+     ```
+   - Output:
+     ```python
+     >>> print(my_list)
+     ['Brennan', 'Poppy', 'Sure! Here's the updated version of the `1-my_list.txt` file with the tests formatted correctly:
+
+```plaintext
+=======================
+How to Use 1-my_list.py
+=======================
+
+This module defines a class `MyList` that inherits from `list`.
+
+Instantiation
+=============
+
+`MyList` can be instantiated with no arguments, which will return an empty list:
+
+```python
+>>> MyList = __import__('1-my_list').MyList
+>>> my_list = MyList()
+>>> type(my_list)
+<class '1-my_list.MyList'>
