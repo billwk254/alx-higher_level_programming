@@ -1,0 +1,27 @@
+    """
+    Custom list class that inherits from list.
+
+    Public Methods:
+        print_sorted(self): Prints the list in sorted order (ascending sort).
+
+    Examples:
+        >>> my_list = MyList([3, 1, 2])
+        >>> my_list.print_sorted()
+        [1, 2, 3]
+
+        >>> my_empty_list = MyList([])
+        >>> my_empty_list.print_sorted()
+        []
+
+        >>> my_single_element_list = MyList([5])
+        >>> my_single_element_list.print_sorted()
+        [5]
+
+        >>> my_negative_numbers_list = MyList([-3, -1, -2])
+        >>> my_negative_numbers_list.print_sorted()
+        [-3, -2, -1]
+
+        >>> my_duplicate_elements_list = MyList([3, 1, 2, 3, 1])
+        >>> my_duplicate_elements_list.print_sorted()
+        [1, 1, 2, 3, 3]
+    """
