@@ -1,6 +1,11 @@
 #!/usr/bin/python3
 
 
+"""
+A module with Mylist class
+"""
+
+
 class MyList(list):
     """
     Custom list class that inherits from list.
