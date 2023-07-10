@@ -1,0 +1,31 @@
+base_geometry.py
+
+# Test cases for BaseGeometry class
+
+# Test area method
+>>> geometry = BaseGeometry()
+>>> geometry.area()
+Traceback (most recent call last):
+...
+Exception: area() is not implemented.
+
+# Test integer_validator method
+>>> geometry = BaseGeometry()
+>>> geometry.integer_validator("width", 10)
+>>> geometry.integer_validator("height", "20")
+Traceback (most recent call last):
+...
+TypeError: height must be an integer
+>>> geometry.integer_validator("length", -5)
+Traceback (most recent call last):
+...
+ValueError: length must be greater than 0
+
+# Test with zero values
+>>> geometry.integer_validator("zero", 0)
+Traceback (most recent call last):
+...
+ValueError: zero must be greater than 0
+
+# Test with positive values
+>>> geometry.integer_validator("positive", 42)
