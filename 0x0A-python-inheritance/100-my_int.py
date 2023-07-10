@@ -1,6 +1,11 @@
 #!/usr/bin/python3
 
 
+"""
+A module with a class representing a rebellious integer
+"""
+
+
 class MyInt(int):
     """
     Class representing a rebellious integer.

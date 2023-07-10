@@ -1,6 +1,11 @@
 #!/usr/bin/python3
 
 
+"""
+A module with a base class representing the base geometry
+"""
+
+
 class BaseGeometry:
     """
     Base class representing the base geometry.

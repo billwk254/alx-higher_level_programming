@@ -1,6 +1,11 @@
 #!/usr/bin/python3
 
 
+"""
+A module with a function that adds a new attribute to an object
+"""
+
+
 def add_attribute(obj, attribute, value):
     """
     Adds a new attribute to an object if it's possible.
