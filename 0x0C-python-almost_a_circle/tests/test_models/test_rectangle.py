@@ -1,91 +1,155 @@
 #!/usr/bin/python3
+
+
 """
-test_rectangle.py - Unit tests for the Rectangle class.
+Test module for Rectangle class.
 """
+
 
 import unittest
 from models.rectangle import Rectangle
+from models.base import Base
+
 
 class TestRectangle(unittest.TestCase):
     """
-    TestRectangle - Test cases for the Rectangle class.
+    Test cases for the Rectangle class.
     """
 
-    def test_id_assignment(self):
+    def test_inheritance(self):
         """
-        Test id assignment when 'id' is provided and when 'id' is not provided.
+        Test if Rectangle inherits from Base.
         """
-        obj1 = Rectangle(10, 20)
-        self.assertEqual(obj1.id, 1)
+        self.assertTrue(issubclass(Rectangle, Base))
 
-        obj2 = Rectangle(5, 10, 2, 2, 10)
-        self.assertEqual(obj2.id, 10)
-
-    def test_width(self):
+    def test_attributes(self):
         """
-        Test width getter and setter.
+        Test the attributes of Rectangle class.
         """
-        obj = Rectangle(5, 10)
-        self.assertEqual(obj.width, 5)
+        r = Rectangle(5, 10, 2, 4, 1)
+        self.assertEqual(r.width, 5)
+        self.assertEqual(r.height, 10)
+        self.assertEqual(r.x, 2)
+        self.assertEqual(r.y, 4)
+        self.assertEqual(r.id, 1)
 
-        obj.width = 20
-        self.assertEqual(obj.width, 20)
-
+    def test_width_type_error(self):
+        """
+        Test width attribute with non-integer value.
+        """
         with self.assertRaises(TypeError):
-            obj.width = "invalid"
+            r = Rectangle("width", 10)
 
+    def test_width_value_error(self):
+        """
+        Test width attribute with value less than or equal to 0.
+        """
         with self.assertRaises(ValueError):
-            obj.width = -5
+            r = Rectangle(0, 10)
 
-    def test_height(self):
+    def test_height_type_error(self):
         """
-        Test height getter and setter.
+        Test height attribute with non-integer value.
         """
-        obj = Rectangle(5, 10)
-        self.assertEqual(obj.height, 10)
-
-        obj.height = 15
-        self.assertEqual(obj.height, 15)
-
         with self.assertRaises(TypeError):
-            obj.height = "invalid"
+            r = Rectangle(5, "height")
 
+    def test_height_value_error(self):
+        """
+        Test height attribute with value less than or equal to 0.
+        """
         with self.assertRaises(ValueError):
-            obj.height = 0
+            r = Rectangle(5, 0)
 
-    def test_x(self):
+    def test_x_type_error(self):
         """
-        Test x getter and setter.
+        Test x attribute with non-integer value.
         """
-        obj = Rectangle(5, 10, 2, 2)
-        self.assertEqual(obj.x, 2)
-
-        obj.x = 5
-        self.assertEqual(obj.x, 5)
-
         with self.assertRaises(TypeError):
-            obj.x = "invalid"
+            r = Rectangle(5, 10, "x", 4)
 
-        # x can be set to negative values
-        obj.x = -3
-        self.assertEqual(obj.x, -3)
-
-    def test_y(self):
+    def test_x_value_error(self):
         """
-        Test y getter and setter.
+        Test x attribute with value less than 0.
         """
-        obj = Rectangle(5, 10, 2, 2)
-        self.assertEqual(obj.y, 2)
+        with self.assertRaises(ValueError):
+            r = Rectangle(5, 10, -2, 4)
 
-        obj.y = 5
-        self.assertEqual(obj.y, 5)
-
+    def test_y_type_error(self):
+        """
+        Test y attribute with non-integer value.
+        """
         with self.assertRaises(TypeError):
-            obj.y = "invalid"
+            r = Rectangle(5, 10, 2, "y")
 
-        # y can be set to negative values
-        obj.y = -3
-        self.assertEqual(obj.y, -3)
+    def test_y_value_error(self):
+        """
+        Test y attribute with value less than 0.
+        """
+        with self.assertRaises(ValueError):
+            r = Rectangle(5, 10, 2, -4)
+
+    def test_area(self):
+        """
+        Test the area method of Rectangle.
+        """
+        r = Rectangle(5, 10)
+        self.assertEqual(r.area(), 50)
+
+    def test_display(self):
+        """
+        Test the display method of Rectangle.
+        """
+        r = Rectangle(3, 2)
+        expected_output = "###\n###\n"
+        with unittest.mock.patch("sys.stdout", new=unittest.mock.StringIO()) as output:
+            r.display()
+            self.assertEqual(output.getvalue(), expected_output)
+
+    def test_str(self):
+        """
+        Test the __str__ method of Rectangle.
+        """
+        r = Rectangle(5, 10, 2, 4, 1)
+        expected_str = "[Rectangle] (1) 2/4 - 5/10"
+        self.assertEqual(str(r), expected_str)
+
+    def test_update_args(self):
+        """
+        Test the update method with *args.
+        """
+        r = Rectangle(5, 10, 2, 4, 1)
+        r.update(10, 20, 30, 40, 50)
+        self.assertEqual(r.id, 10)
+        self.assertEqual(r.width, 20)
+        self.assertEqual(r.height, 30)
+        self.assertEqual(r.x, 40)
+        self.assertEqual(r.y, 50)
+
+    def test_update_kwargs(self):
+        """
+        Test the update method with **kwargs.
+        """
+        r = Rectangle(5, 10, 2, 4, 1)
+        r.update(id=10, width=20, height=30, x=40, y=50)
+        self.assertEqual(r.id, 10)
+        self.assertEqual(r.width, 20)
+        self.assertEqual(r.height, 30)
+        self.assertEqual(r.x, 40)
+        self.assertEqual(r.y, 50)
+
+    def test_update_args_kwargs(self):
+        """
+        Test the update method with *args and **kwargs (should prioritize **kwargs).
+        """
+        r = Rectangle(5, 10, 2, 4, 1)
+        r.update(10, width=20, height=30, x=40, y=50)
+        self.assertEqual(r.id, 10)
+        self.assertEqual(r.width, 20)
+        self.assertEqual(r.height, 30)
+        self.assertEqual(r.x, 40)
+        self.assertEqual(r.y, 50)
+
 
 if __name__ == "__main__":
     unittest.main()
