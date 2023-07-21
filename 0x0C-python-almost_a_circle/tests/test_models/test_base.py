@@ -1,6 +1,3 @@
-#!/usr/bin/python3
-
-
 """
 test_base.py - This module contains tests for the Base class.
 """
