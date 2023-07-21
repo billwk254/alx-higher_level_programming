@@ -6,6 +6,8 @@ base.py - This module contains the Base class
 """
 
 import json
+import csv
+import turtle
 
 
 class Base:
@@ -149,3 +151,32 @@ class Base:
                 return obj_list
         except FileNotFoundError:
             return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        screen = turtle.Screen()
+        screen.bgcolor("white")
+
+        for rect in list_rectangles:
+            t = turtle.Turtle()
+            t.speed(1)
+            t.penup()
+            t.goto(rect.x, rect.y)
+            t.pendown()
+            for _ in range(2):
+                t.forward(rect.width)
+                t.left(90)
+                t.forward(rect.height)
+                t.left(90)
+
+        for sq in list_squares:
+            t = turtle.Turtle()
+            t.speed(1)
+            t.penup()
+            t.goto(sq.x, sq.y)
+            t.pendown()
+            for _ in range(4):
+                t.forward(sq.size)
+                t.left(90)
+
+        turtle.done()
