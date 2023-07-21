@@ -67,7 +67,7 @@ class Base:
     @staticmethod
     def from_json_string(json_string):
         """
-        Convert a JSON string representation to a list of dictionaries.
+        Convert a JSON string representation to a list of dictionaries
 
         Args:
             json_string (str): A string representing a list of dictionaries.
