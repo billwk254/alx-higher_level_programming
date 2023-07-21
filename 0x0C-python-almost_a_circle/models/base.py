@@ -116,3 +116,23 @@ class Base:
                 return [cls.create(**dictionary) for dictionary in list_dicts]
         except FileNotFoundError:
             return []
+
+    @classmethod
+    def load_from_file_csv(cls):
+        filename = cls.__name__ + ".csv"
+        try:
+            with open(filename, 'r', newline='') as file:
+                reader = csv.reader(file)
+                obj_list = []
+                for row in reader:
+                    row = [int(val) for val in row]
+                    if cls.__name__ == "Rectangle":
+                        obj = cls(1, 1)
+                        obj.id, obj.width, obj.height, obj.x, obj.y = row
+                    elif cls.__name__ == "Square":
+                        obj = cls(1)
+                        obj.id, obj.size, obj.x, obj.y = row
+                    obj_list.append(obj)
+                return obj_list
+        except FileNotFoundError:
+            return []
