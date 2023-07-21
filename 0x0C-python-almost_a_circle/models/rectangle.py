@@ -183,14 +183,18 @@ class Rectangle(Base):
         Update the attributes of the Rectangle instance.
 
         Args:
-            *args: A variable number of arguments in the order:
+            *args: A variable number of arguments
                 - id (int)
                 - width (int)
                 - height (int)
                 - x (int)
                 - y (int)
+            **kwargs: A dictionary of key-value pairs
         """
         if args:
             attrs = ["id", "width", "height", "x", "y"]
             for i, arg in enumerate(args):
                 setattr(self, attrs[i], arg)
+        elif kwargs:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
