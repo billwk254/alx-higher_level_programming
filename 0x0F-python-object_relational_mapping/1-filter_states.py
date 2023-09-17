@@ -2,23 +2,7 @@
 
 
 """
-Script to list all states from a MySQL database using MySQLdb.
-
-This script connects to a MySQL database and retrieves a list of states,
-sorted in ascending order by their IDs.
-
-Usage:
-    ./0-select_states.py <mysql_username> <mysql_password> <database_name>
-
-Arguments:
-    mysql_username: The username for MySQL authentication.
-    mysql_password: The password for MySQL authentication.
-    database_name: The name of the MySQL database to connect to.
-
-This script requires the MySQLdb module.
-
-Example:
-    ./0-select_states.py root root hbtn_0e_0_usa
+Script to list states with names starting with 'N'
 """
 
 
@@ -26,9 +10,9 @@ import MySQLdb
 import sys
 
 
-def list_states(username, password, database_name):
+def filter_states(username, password, database_name):
     """
-    List all states from a MySQL database.
+    List states with names starting with 'N' from a MySQL database.
 
     Args:
         username (str): The username for MySQL authentication.
@@ -51,8 +35,7 @@ def list_states(username, password, database_name):
         # Create a cursor object to interact with the database
         cursor = conn.cursor()
 
-        # Execute the SQL query to select all states, ordered by id
-        cursor.execute("SELECT * FROM states ORDER BY id ASC")
+        cursor.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
 
         # Fetch all rows
         rows = cursor.fetchall()
@@ -79,4 +62,6 @@ if __name__ == "__main__":
     mysql_username = sys.argv[1]
     mysql_password = sys.argv[2]
     database_name = sys.argv[3]
-    list_states(mysql_username, mysql_password, database_name)
+
+    # Call the function to list filtered states
+    filter_states(mysql_username, mysql_password, database_name)
