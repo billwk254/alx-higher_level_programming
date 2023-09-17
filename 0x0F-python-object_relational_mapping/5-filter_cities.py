@@ -36,17 +36,18 @@ def filter_cities(username, password, database_name, state_name):
         # Create a cursor object to interact with the database
         cursor = conn.cursor()
 
-        # Create a parameterized query to select cities
-        query = "SELECT GROUP_CONCAT(name SEPARATOR ', ') FROM cities WHERE state_id IN (SELECT id FROM states WHERE name = %s)"
+        # Create a parameterized query to select cities of the specified state
+        query = "SELECT cities.id, cities.name, states.name FROM cities \
+                 JOIN states ON cities.state_id = states.id \
+                 WHERE states.name = %s ORDER BY cities.id ASC"
         cursor.execute(query, (state_name,))
 
-        # Fetch the result
-        result = cursor.fetchone()
+        # Fetch all rows
+        rows = cursor.fetchall()
 
-        if result[0]:
-            print(result[0])
-        else:
-            print("No cities found for the specified state.")
+        # Print the results
+        for row in rows:
+            print(row)
 
         # Close the cursor and connection
         cursor.close()
@@ -57,7 +58,7 @@ def filter_cities(username, password, database_name, state_name):
 
 
 if __name__ == "__main__":
-    # Check if the script is called correctly
+    # Check if the script is called with the correct number of arguments
     if len(sys.argv) != 5:
         print("Wrong code format")
         sys.exit(1)
