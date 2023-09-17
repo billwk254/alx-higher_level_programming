@@ -21,11 +21,11 @@ if __name__ == "__main__":
     # Get the arguments
     username = sys.argv[1]
     password = sys.argv[2]
-    db_name_name = sys.argv[3]
+    db_name = sys.argv[3]
 
     # Create an SQLAlchemy engine to connect to the database
     engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'
-                           .format(username, mpassword, db_name),
+                           .format(username, password, db_name),
                            pool_pre_ping=True)
 
     # Create a session to interact with the database
