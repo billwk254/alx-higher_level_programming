@@ -37,7 +37,7 @@ def filter_cities(username, password, database_name, state_name):
         cursor = conn.cursor()
 
         # Create a parameterized query to select cities of the specified state
-        query = "SELECT cities.id, cities.name, states.name FROM cities \
+        query = "SELECT cities.id, cities.name FROM cities \
                  JOIN states ON cities.state_id = states.id \
                  WHERE states.name = %s ORDER BY cities.id ASC"
         cursor.execute(query, (state_name,))
@@ -45,9 +45,12 @@ def filter_cities(username, password, database_name, state_name):
         # Fetch all rows
         rows = cursor.fetchall()
 
-        # Print the results
-        for row in rows:
-            print(row)
+        # Extract city names from the result
+        city_names = [row[1] for row in rows]
+
+        # Display the results as a comma-separated string
+        result = ", ".join(city_names)
+        print(result)
 
         # Close the cursor and connection
         cursor.close()
