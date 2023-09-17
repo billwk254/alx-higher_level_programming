@@ -1,10 +1,7 @@
 #!/usr/bin/python3
-
-
 """
 Script to create the State "California" with the City "San Francisco".
 """
-
 
 import sys
 from sqlalchemy import create_engine
@@ -12,11 +9,10 @@ from sqlalchemy.orm import sessionmaker
 from relationship_state import Base, State
 from relationship_city import City
 
-
 if __name__ == "__main__":
     # Check if the script is called with the correct number of arguments
     if len(sys.argv) != 4:
-        print("Wrong code format")
+        print("Usage: ./100-relationship_states_cities.py <mysql_username> <mysql_password> <database_name>")
         sys.exit(1)
 
     # Get the arguments
@@ -27,6 +23,9 @@ if __name__ == "__main__":
     # Create an SQLAlchemy engine to connect to the database
     engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
         mysql_username, mysql_password, database_name), pool_pre_ping=True)
+
+    # Create all tables in the database
+    Base.metadata.create_all(engine)
 
     # Create a session to interact with the database
     Session = sessionmaker(bind=engine)
