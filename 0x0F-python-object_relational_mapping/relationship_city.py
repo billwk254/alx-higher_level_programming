@@ -6,8 +6,9 @@ Contains the class definition of a City.
 """
 
 
+import sqlalchemy
 from sqlalchemy import Column, Integer, String, ForeignKey
-from relationship_state import Base
+from relationship_state import Base, State
 
 
 class City(Base):
