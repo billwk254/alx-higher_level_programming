@@ -1,11 +1,14 @@
 #!/usr/bin/node
 
 const originalDict = require('./101-data').dict;
-
 const reversedDict = {};
 
-for (const [key, value] of Object.entries(originalDict)) {
-  reversedDict[value] ? reversedDict[value].push(key) : (reversedDict[value] = [key]);
-}
+Object.keys(originalDict).map((key, index) => {
+  if (reversedDict[originalDict[key]] === undefined) {
+    reversedDict[originalDict[key]] = [];
+  }
+  reversedDict[originalDict[key]].push(key);
+});
 
 console.log(reversedDict);
+
