@@ -1,17 +1,11 @@
 #!/usr/bin/node
 
-const data = require('./101-data');
-const dict = data.dict;
+const originalDict = require('./101-data').dict;
 
-const newDict = {};
+const reversedDict = {};
 
-for (const key in dict) {
-  const value = dict[key];
-  if (newDict[value]) {
-    newDict[value].push(key);
-  } else {
-    newDict[value] = [key];
-  }
+for (const [key, value] of Object.entries(originalDict)) {
+  reversedDict[value] ? reversedDict[value].push(key) : (reversedDict[value] = [key]);
 }
 
-console.log(newDict);
+console.log(reversedDict);
