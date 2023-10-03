@@ -3,12 +3,15 @@
 const originalDict = require('./101-data').dict;
 const reversedDict = {};
 
-Object.keys(originalDict).map((key, index) => {
-  if (reversedDict[originalDict[key]] === undefined) {
-    reversedDict[originalDict[key]] = [];
+for (const userId in originalDict) {
+  const occurrence = originalDict[userId];
+  
+  if (!reversedDict[occurrence]) {
+    reversedDict[occurrence] = [];
   }
-  reversedDict[originalDict[key]].push(key);
-});
+  
+  reversedDict[occurrence].push(userId);
+}
 
 console.log(reversedDict);
 
